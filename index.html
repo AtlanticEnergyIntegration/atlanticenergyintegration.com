@@ -684,14 +684,14 @@
         <div class="contact-icon">✉</div>
         <div>
           <div class="contact-detail-label">General Inquiries</div>
-          <div class="contact-detail-value"><a href="/cdn-cgi/l/email-protection#97fef9f1f8d7f6e3fbf6f9e3fef4f2f9f2e5f0eefef9e3f2f0e5f6e3fef8f9b9f4f8fa"><span class="__cf_email__" data-cfemail="3a53545c557a5b4e565b544e53595f545f485d4353544e5f5d485b4e53555414595557">[email&#160;protected]</span></a></div>
+          <div class="contact-detail-value"><a id="email1" href="#">—</a></div>
         </div>
       </div>
       <div class="contact-detail">
         <div class="contact-icon">✉</div>
         <div>
           <div class="contact-detail-label">Direct Contact</div>
-          <div class="contact-detail-value"><a href="/cdn-cgi/l/email-protection#c5a4aba1b7acac85a4b1a9a4abb1aca6a0aba0b7a2bcacabb1a0a2b7a4b1acaaabeba6aaa8"><span class="__cf_email__" data-cfemail="e4858a80968d8da4859088858a908d87818a8196839d8d8a9081839685908d8b8aca878b89">[email&#160;protected]</span></a></div>
+          <div class="contact-detail-value"><a id="email2" href="#">—</a></div>
         </div>
       </div>
       <div class="contact-detail">
@@ -789,15 +789,29 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
+// Build emails via JS to bypass Cloudflare obfuscation
+(function() {
+  var u1 = 'info';
+  var u2 = 'andrii';
+  var d = 'atlanticenergyintegration.com';
+  var e1 = document.getElementById('email1');
+  var e2 = document.getElementById('email2');
+  if (e1) { e1.textContent = u1 + '@' + d; e1.href = 'mailto:' + u1 + '@' + d; }
+  if (e2) { e2.textContent = u2 + '@' + d; e2.href = 'mailto:' + u2 + '@' + d; }
+})();
+
 function handleSubmit(e) {
   e.preventDefault();
   const form = e.target;
   const data = new FormData(form);
   const body = Object.fromEntries(data);
 
-  // Using Formspree — replace YOUR_FORM_ID with actual ID from formspree.io
-  fetch('https://formspree.io/f/xreyqqvr', {
+  const btn = form.querySelector('button[type="submit"]');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+
+  fetch('https://formspree.io/f/YOUR_FORM_ID', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body: JSON.stringify(body)
@@ -806,6 +820,26 @@ function handleSubmit(e) {
     if (r.ok) {
       form.reset();
       document.getElementById('formSuccess').style.display = 'block';
+      btn.textContent = 'Send Inquiry →';
+      btn.disabled = false;
     } else {
-      // Fallback: open email client
-      win
+      throw new Error('Form error');
+    }
+  })
+  .catch(() => {
+    // Fallback: compose email directly
+    const subject = encodeURIComponent('Project Inquiry — ' + (body.company || body.firstName + ' ' + body.lastName));
+    const emailBody = encodeURIComponent(
+      'Name: ' + body.firstName + ' ' + body.lastName + '\n' +
+      'Company: ' + (body.company || '—') + '\n' +
+      'Country: ' + (body.country || '—') + '\n' +
+      'Email: ' + body.email + '\n' +
+      'Project Type: ' + (body.projectType || '—') + '\n\n' +
+      'Message:\n' + body.message
+    );
+    window.location.href = 'mailto:info@atlanticenergyintegration.com?subject=' + subject + '&body=' + emailBody;
+    btn.textContent = 'Send Inquiry →';
+    btn.disabled = false;
+  });
+}
+</script>
