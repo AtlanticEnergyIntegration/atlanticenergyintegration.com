@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atlantic Energy Integration LLC</title>
+<meta name="description" content="U.S.-based energy infrastructure integrator specializing in distributed generation, CHP systems, and microgrid solutions for international markets.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1f35;
+    --navy-mid: #162d47;
+    --blue: #1a4a7a;
+    --accent: #c8a96e;
+    --accent-light: #e8d5a3;
+    --steel: #4a7fa5;
+    --text: #1a2535;
+    --muted: #6b7e94;
+    --light: #f4f6f9;
+    --white: #ffffff;
+    --border: #dce4ed;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13, 31, 53, 0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(200, 169, 110, 0.2);
+    padding: 0 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--white);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .nav-logo span {
+    display: inline-block; width: 6px; height: 6px;
+    background: var(--accent); border-radius: 50%;
+  }
+
+  .nav-links {
+    display: flex; gap: 36px; list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding: 120px 48px 80px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 50%, rgba(26, 74, 122, 0.4) 0%, transparent 70%),
+      radial-gradient(ellipse 30% 40% at 85% 20%, rgba(200, 169, 110, 0.08) 0%, transparent 60%);
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-content {
+    position: relative; z-index: 1;
+    max-width: 760px;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 14px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block; width: 40px; height: 1px;
+    background: var(--accent);
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.6);
+    max-width: 520px;
+    line-height: 1.8;
+    margin-bottom: 48px;
+  }
+
+  .hero-actions {
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent);
+    color: var(--navy);
+    padding: 14px 32px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: none; cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    padding: 14px 32px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.25);
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .hero-stats {
+    position: absolute; right: 48px; bottom: 80px;
+    display: flex; gap: 48px;
+    z-index: 1;
+  }
+
+  .stat { text-align: right; }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .stat-num sup {
+    font-size: 1rem;
+    color: var(--accent);
+    vertical-align: super;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 100px 48px; }
+
+  .section-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--steel);
+    font-weight: 500;
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 14px;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    display: block; width: 30px; height: 1px;
+    background: var(--steel);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.9rem, 3vw, 2.8rem);
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 20px;
+  }
+
+  .section-lead {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.8;
+    margin-bottom: 56px;
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    background: var(--white);
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--muted);
+    margin-bottom: 20px;
+    line-height: 1.85;
+  }
+
+  .about-text p strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .about-features {
+    display: flex; flex-direction: column; gap: 32px;
+  }
+
+  .feature {
+    padding: 28px 32px;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    background: var(--light);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .feature:hover {
+    transform: translateX(4px);
+    box-shadow: -4px 0 20px rgba(200,169,110,0.1);
+  }
+
+  .feature-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .feature p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ── SERVICES ── */
+  .services {
+    background: var(--light);
+  }
+
+  .services-inner {
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border);
+  }
+
+  .service-card {
+    background: var(--white);
+    padding: 40px 36px;
+    transition: background 0.25s;
+    position: relative; overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { background: var(--navy); }
+  .service-card:hover .service-num { color: rgba(200,169,110,0.3); }
+  .service-card:hover .service-title { color: var(--white); }
+  .service-card:hover .service-desc { color: rgba(255,255,255,0.5); }
+
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 400;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 20px;
+    transition: color 0.25s;
+  }
+
+  .service-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 12px;
+    transition: color 0.25s;
+  }
+
+  .service-desc {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.75;
+    transition: color 0.25s;
+  }
+
+  /* ── PARTNERS ── */
+  .partners {
+    background: var(--navy);
+    padding: 64px 48px;
+  }
+
+  .partners-inner {
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  .partners-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  .partners-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .partner-tag {
+    padding: 8px 20px;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.5);
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    font-weight: 400;
+    transition: all 0.2s;
+  }
+
+  .partner-tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--white);
+  }
+
+  .contact-inner {
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-info { }
+
+  .contact-detail {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .contact-detail:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .contact-icon {
+    width: 38px; height: 38px;
+    background: var(--light);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--steel);
+    font-size: 0.9rem;
+  }
+
+  .contact-detail-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .contact-detail-value {
+    font-size: 0.92rem;
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  .contact-detail-value a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-detail-value a:hover { color: var(--steel); }
+
+  /* ── FORM ── */
+  .form-group { margin-bottom: 20px; }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+    font-weight: 400;
+  }
+
+  input, textarea, select {
+    width: 100%;
+    padding: 12px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 300;
+    color: var(--text);
+    background: var(--white);
+    border: 1px solid var(--border);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    border-color: var(--steel);
+    box-shadow: 0 0 0 3px rgba(74, 127, 165, 0.08);
+  }
+
+  textarea { resize: vertical; min-height: 130px; }
+
+  .form-submit {
+    margin-top: 8px;
+    display: flex; align-items: center; gap: 20px;
+  }
+
+  .form-note {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    padding: 48px;
+    border-top: 1px solid rgba(200,169,110,0.15);
+  }
+
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    section { padding: 72px 24px; }
+    .hero { padding: 100px 24px 200px; }
+    .hero-stats { right: 24px; bottom: 48px; gap: 28px; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+    .partners { padding: 48px 24px; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+  .hero h1 { animation: fadeUp 0.6s 0.15s ease both; }
+  .hero-sub { animation: fadeUp 0.6s 0.28s ease both; }
+  .hero-actions { animation: fadeUp 0.6s 0.4s ease both; }
+  .hero-stats { animation: fadeUp 0.6s 0.5s ease both; }
+
+  /* success message */
+  .form-success {
+    display: none;
+    padding: 16px 20px;
+    background: #e8f5e9;
+    border: 1px solid #a5d6a7;
+    color: #2e7d32;
+    font-size: 0.88rem;
+    margin-top: 16px;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#"><span></span> Atlantic Energy Integration</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Massachusetts, USA &nbsp;·&nbsp; Est. 2025</div>
+    <h1>Distributed Energy<br>for <em>Critical Infrastructure</em></h1>
+    <p class="hero-sub">Atlantic Energy Integration LLC bridges U.S.-manufactured energy technologies — CHP systems, modular generation, and microgrids — with international infrastructure markets undergoing modernization.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Submit a Project Inquiry</a>
+      <a href="#services" class="btn-secondary">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">1–5<sup>MW</sup></div>
+      <div class="stat-label">CHP Range</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">15<sup>+</sup></div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<div class="about" style="max-width:1200px;margin:0 auto;">
+  <div class="section-eyebrow">About</div>
+  <h2 class="section-title">The U.S.–International<br>Energy Bridge</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>Atlantic Energy Integration LLC is a Boston-based energy infrastructure integrator acting as the strategic link between <strong>U.S. manufacturers of distributed energy technology</strong> and international markets — primarily Ukraine and Eastern Europe — undergoing significant infrastructure modernization.</p>
+      <p>Our founder brings nearly a decade of operational experience within Ukraine's national gas transmission system (Ukrtransgaz / GTSOU), combined with U.S.-based cybersecurity and infrastructure expertise developed through a fellowship with the <strong>City of Boston</strong>.</p>
+      <p>We operate at the intersection of technical integration, regulatory compliance, and international project management — offering a service model that no pure engineering firm or general consultancy can replicate.</p>
+      <p style="margin-top:32px; font-size:0.8rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--steel);">
+        Memberships: <strong>IEEE &nbsp;·&nbsp; AEE &nbsp;·&nbsp; CS²AI</strong>
+      </p>
+    </div>
+    <div class="about-features">
+      <div class="feature">
+        <div class="feature-title">Engineering Depth</div>
+        <p>MSc Mechanical Engineering with thesis focus on natural gas facility systems. Direct deployment experience with multi-megawatt CHP units in complex infrastructure environments.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-title">Regulatory & Procurement Expertise</div>
+        <p>Proven track record managing government-level procurement contracts with Ukraine's largest state energy enterprises, including GTSOU and Ukrgasvydobuvannya.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-title">Certified In-Country Execution</div>
+        <p>Formalized partnership with Algorithm Group of Companies — an ISO/IEC 17025-accredited engineering conglomerate providing full EPC capability in Ukraine.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-title">Cybersecurity Integration</div>
+        <p>ICS/OT security expertise embedded in all project designs, aligned with CISA Cyber-Informed Engineering (CIE) framework and U.S. critical infrastructure standards.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+<div class="services-inner">
+  <div class="section-eyebrow">Services</div>
+  <h2 class="section-title">What We Deliver</h2>
+  <p class="section-lead">End-to-end integration of U.S. energy technologies into international infrastructure environments — from feasibility to commissioning.</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-title">Integrated Systems Deployment</div>
+      <p class="service-desc">Containerized CHP modules, modular distributed power units, and hybrid microgrid integration. Sourced from U.S. manufacturers including Caterpillar, Cummins, and Eaton.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-title">Strategic Advisory & Feasibility</div>
+      <p class="service-desc">Technical and economic feasibility studies, infrastructure resilience master plans, and U.S.–International Energy Integration Program development for reconstruction projects.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-title">Project Management & Integration</div>
+      <p class="service-desc">End-to-end coordination between U.S. equipment suppliers, in-country EPC partners, and project stakeholders — including regulatory compliance and certification support.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-title">Manufacturer Representation</div>
+      <p class="service-desc">Representing U.S. manufacturers in Ukrainian and Eastern European markets — handling technical adaptation, certification of imported equipment, and local market entry.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-title">ICS/OT Cybersecurity Integration</div>
+      <p class="service-desc">Cyber-informed engineering assessments for energy infrastructure, aligned with CISA CIE framework. Securing industrial control systems in distributed generation deployments.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-title">Supply Chain Optimization</div>
+      <p class="service-desc">Connecting international project developers with verified U.S. and European equipment suppliers. Priority sourcing of industrial automation components through established partnerships.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PARTNERS -->
+<div class="partners">
+<div class="partners-inner">
+  <p class="partners-label">U.S. Manufacturer Relationships</p>
+  <div class="partners-list">
+    <div class="partner-tag">Caterpillar</div>
+    <div class="partner-tag">ABB</div>
+    <div class="partner-tag">Cummins</div>
+    <div class="partner-tag">Eaton</div>
+    <div class="partner-tag">Schneider Electric</div>
+    <div class="partner-tag">WESCO</div>
+    <div class="partner-tag">ReBoSS Inc.</div>
+    <div class="partner-tag">Maddox Industrial Transformer</div>
+  </div>
+</div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+<div class="contact-inner">
+  <div class="section-eyebrow">Contact</div>
+  <h2 class="section-title">Submit a Project Inquiry</h2>
+  <p class="section-lead">We welcome inquiries from project developers, infrastructure owners, and technology partners. All inquiries are reviewed within 2 business days.</p>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-detail">
+        <div class="contact-icon">✉</div>
+        <div>
+          <div class="contact-detail-label">General Inquiries</div>
+          <div class="contact-detail-value"><a href="mailto:info@atlanticenergyintegration.com">info@atlanticenergyintegration.com</a></div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">✉</div>
+        <div>
+          <div class="contact-detail-label">Direct Contact</div>
+          <div class="contact-detail-value"><a href="mailto:andrii@atlanticenergyintegration.com">andrii@atlanticenergyintegration.com</a></div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">☎</div>
+        <div>
+          <div class="contact-detail-label">Phone</div>
+          <div class="contact-detail-value"><a href="tel:+1XXXXXXXXXX">+1 (XXX) XXX-XXXX</a></div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">◎</div>
+        <div>
+          <div class="contact-detail-label">Location</div>
+          <div class="contact-detail-value">Boston Metropolitan Area<br>Massachusetts, USA</div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">⚖</div>
+        <div>
+          <div class="contact-detail-label">Entity</div>
+          <div class="contact-detail-value">Atlantic Energy Integration LLC<br>Registered in Massachusetts</div>
+        </div>
+      </div>
+    </div>
+
+    <form id="contactForm" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name *</label>
+          <input type="text" name="firstName" required placeholder="John">
+        </div>
+        <div class="form-group">
+          <label>Last Name *</label>
+          <input type="text" name="lastName" required placeholder="Smith">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Company / Organization</label>
+          <input type="text" name="company" placeholder="Your organization">
+        </div>
+        <div class="form-group">
+          <label>Country</label>
+          <input type="text" name="country" placeholder="e.g. Ukraine, USA">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" name="email" required placeholder="you@company.com">
+      </div>
+      <div class="form-group">
+        <label>Project Type</label>
+        <select name="projectType">
+          <option value="">— Select —</option>
+          <option>CHP System Integration (1–5 MW)</option>
+          <option>Microgrid / Energy Island</option>
+          <option>Infrastructure Feasibility Study</option>
+          <option>Equipment Sourcing & Certification</option>
+          <option>ICS/OT Cybersecurity Assessment</option>
+          <option>Strategic Advisory</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Project Description *</label>
+        <textarea name="message" required placeholder="Please describe your project, location, capacity requirements, and timeline..."></textarea>
+      </div>
+      <div class="form-submit">
+        <button type="submit" class="btn-primary">Send Inquiry →</button>
+        <p class="form-note">We respond within<br>2 business days.</p>
+      </div>
+      <div class="form-success" id="formSuccess">
+        ✓ Your inquiry has been received. We will be in touch within 2 business days.
+      </div>
+    </form>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Atlantic Energy Integration LLC</div>
+    <div class="footer-copy">© 2025 Atlantic Energy Integration LLC · Boston, MA · atlanticenergyintegration.com</div>
+  </div>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+  const body = Object.fromEntries(data);
+
+  // Using Formspree — replace YOUR_FORM_ID with actual ID from formspree.io
+  fetch('https://formspree.io/f/YOUR_FORM_ID', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(body)
+  })
+  .then(r => {
+    if (r.ok) {
+      form.reset();
+      document.getElementById('formSuccess').style.display = 'block';
+    } else {
+      // Fallback: open email client
+      window.location.href = `mailto:info@atlanticenergyintegration.com?subject=Project Inquiry from ${body.firstName} ${body.lastName}&body=${encodeURIComponent(JSON.stringify(body, null, 2))}`;
+    }
+  })
+  .catch(() => {
+    window.location.href = `mailto:info@atlanticenergyintegration.com?subject=Project Inquiry&body=Name: ${body.firstName} ${body.lastName}%0AEmail: ${body.email}%0AMessage: ${body.message}`;
+  });
+}
+</script>
+
+</body>
+</html>
