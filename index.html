@@ -796,7 +796,7 @@ function handleSubmit(e) {
   const data = new FormData(form);
   const body = Object.fromEntries(data);
 
-  
+  // Using Formspree — replace YOUR_FORM_ID with actual ID from formspree.io
   fetch('https://formspree.io/f/xreyqqvr', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
